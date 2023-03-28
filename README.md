@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2c9d7bcd-630f-47d5-ab86-233286730f60/deploy-status)](https://app.netlify.com/sites/shopping-cart-react-practice/deploys)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
