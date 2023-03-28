@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { getPrice } from '../../utilities/calculate';
+import { deleteShoppingCart } from '../../utilities/fakeDB';
 import Cosmetic from '../Cosmetic/Cosmetic';
+import './Cosmetics.css';
 
 const Cosmetics = () => {
     /* const cosmetics = [
@@ -45,20 +48,26 @@ const Cosmetics = () => {
     const [cosmetics, setCosmetics] = useState([]);
     useEffect(() => {
         fetch('data.json')
-        // fetch('https://cosmetic.free.beeceptor.com')
+            // fetch('https://cosmetic.free.beeceptor.com')
             .then(res => res.json())
             .then(data => setCosmetics(data))
     }, []);
-    
+
+    const totalPrice = getPrice(cosmetics);
+
     return (
         <div>
             <h2>Welcome to my Cosmetics Store</h2>
-            {
-                cosmetics.map(cosmetic => <Cosmetic
-                    cosmetic={cosmetic}
-                    key={cosmetic.id}
-                ></Cosmetic>)
-            }
+            <p>Money Needed: {totalPrice}</p>
+            <div className='cosmetics-container'>
+                {
+                    cosmetics.map(cosmetic => <Cosmetic
+                        cosmetic={cosmetic}
+                        key={cosmetic.id}
+                    ></Cosmetic>)
+                }
+            </div>
+            <button onClick={deleteShoppingCart}>Clear Shopping Cart</button>
         </div>
     );
 };
